@@ -5,15 +5,13 @@ on:
     branches:
       - uat
 
-  jobs:
-    test:
-      run-on: debian-latest
-      container:
-        image: node:20
-      steps:
-        - users: actions/checkout@v3
-          with:
-            node-version: 20
-        - run: npm ci
-        - run: npm test
-        - run: npm build 
+jobs:
+  build:
+    run-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm test
+      - run: npm build 
